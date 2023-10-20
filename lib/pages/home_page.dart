@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:viacep_back4app/models/cep_back4app_model.dart';
 import 'package:viacep_back4app/models/viacep_model.dart';
-import 'package:viacep_back4app/pages/cep_list_page.dart';
+import 'package:viacep_back4app/pages/cadastro_ceps_page.dart';
 import 'package:viacep_back4app/repositories/viacep_repository.dart';
 import 'package:viacep_back4app/utils/snackbar_util.dart';
-import 'package:viacep_back4app/widgets/cep_card.widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 
       setState(() {
         if (result.cep == null) {
-          SnackBarUtil.infoSnackBar(context, "CEP NAO EXISTE. QUER CRIAR ?");
+          SnackBarUtil.infoSnackBar(context, "CEP inválido. Cadastre-o");
         } else {
           cepValue = result.cep ?? 'Invalido';
           cidadeValue = result.cidade ?? 'Invalida';
@@ -72,11 +70,11 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const CepListPage(),
+                    builder: (context) => const CadastroCepsPage(),
                   ),
                 );
               },
-              icon: Icon(Icons.list_alt_rounded))
+              icon: const Icon(Icons.list_alt_rounded))
         ],
       ),
       body: isLoading

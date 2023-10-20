@@ -4,11 +4,13 @@ import 'package:viacep_back4app/models/cep_back4app_model.dart';
 class CepCard extends StatelessWidget {
   final CepBack4appModel cep;
   final int index;
+  final Function() onPressed;
 
   const CepCard({
     super.key,
     required this.cep,
     required this.index,
+    required this.onPressed,
   });
 
   @override
@@ -16,7 +18,7 @@ class CepCard extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: SizedBox(
-        height: 84,
+        height: 96,
         child: Card(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -94,7 +96,7 @@ class CepCard extends StatelessWidget {
                             "Bairro: ",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(cep.bairro ?? "vazio")
+                          Text(cep.bairro ?? "")
                         ],
                       ),
                       Row(
@@ -103,13 +105,57 @@ class CepCard extends StatelessWidget {
                             "Rua: ",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(cep.rua ?? "vazio")
+                          Text(cep.rua ?? "")
                         ],
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(width: 28),
+                Container(
+                  color: Colors.lightGreen,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            "Object Id: ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(cep.id ?? "")
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Criado em: ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(cep.criadoEm == null
+                              ? ''
+                              : cep.criadoEm!.substring(0, 10)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 28),
+                Container(
+                  color: Colors.deepPurple,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: onPressed,
+                        icon: const Icon(Icons.delete),
+                        iconSize: 48,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

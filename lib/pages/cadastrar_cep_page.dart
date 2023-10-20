@@ -1,18 +1,17 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:viacep_back4app/models/viacep_model.dart';
 import 'package:viacep_back4app/repositories/back4app_repository.dart';
 import 'package:viacep_back4app/utils/snackbar_util.dart';
 
-class CreateCepPage extends StatefulWidget {
-  const CreateCepPage({super.key});
+class CadastrarCepPage extends StatefulWidget {
+  const CadastrarCepPage({super.key});
 
   @override
-  State<CreateCepPage> createState() => _CreateCepPageState();
+  State<CadastrarCepPage> createState() => _CadastrarCepPageState();
 }
 
-class _CreateCepPageState extends State<CreateCepPage> {
+class _CadastrarCepPageState extends State<CadastrarCepPage> {
   bool isLoading = true;
 
   final cepController = TextEditingController();
@@ -58,8 +57,15 @@ class _CreateCepPageState extends State<CreateCepPage> {
         isLoading = false;
       });
 
-      SnackBarUtil.infoSnackBar(context, 'CEP cadastrado com SUCESSO');
+      SnackBarUtil.infoSnackBar(context, 'CEP cadastrado com sucesso');
+
       Navigator.pop(context);
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => const CadastroCepsPage(),
+      //   ),
+      // );
     }
   }
 
@@ -75,7 +81,7 @@ class _CreateCepPageState extends State<CreateCepPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastrar um CEP'),
+        title: const Text('Cadastrar um CEP'),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -197,10 +203,10 @@ class _CreateCepPageState extends State<CreateCepPage> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    onPressed: _confirmField,
                     child: const Text(
                       'CADASTRAR',
                     ),
-                    onPressed: _confirmField,
                   ),
                 ),
               ],
