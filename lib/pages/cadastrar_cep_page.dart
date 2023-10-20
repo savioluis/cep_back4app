@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:viacep_back4app/models/viacep_model.dart';
 import 'package:viacep_back4app/repositories/back4app_repository.dart';
@@ -22,14 +21,6 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
 
   final _formField = GlobalKey<FormState>();
   final Back4appRepository _repository = Back4appRepository();
-
-  ///TODO: validacao de numero para o CEP, de 2 digitos para o estado e vazio para as outras
-  String? cepValidator(String? cepInput) {
-    if (cepInput!.isEmpty || cepInput.length < 8) {
-      return "Digite um CEP de 8 digitos";
-    }
-    return null;
-  }
 
   void _confirmField() {
     if (_formField.currentState!.validate()) {
@@ -60,12 +51,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
       SnackBarUtil.infoSnackBar(context, 'CEP cadastrado com sucesso');
 
       Navigator.pop(context);
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => const CadastroCepsPage(),
-      //   ),
-      // );
+      //ATUALIZAR AUTOMATICO ?
     }
   }
 
@@ -81,7 +67,10 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastrar um CEP'),
+        title: const Text(
+          'Cadastrar um CEP',
+          style: TextStyle(fontSize: 24),
+        ),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -96,9 +85,11 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                     children: [
                       TextFormField(
                         controller: cepController,
+                        keyboardType: TextInputType.number,
+                        maxLength: 8,
                         validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Digite um valor valido";
+                          if (value!.isEmpty || value.length < 8) {
+                            return "Digite um valor válido";
                           }
                           return null;
                         },
@@ -106,10 +97,11 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                           FocusScope.of(context).unfocus();
                         },
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          hintText: 'Digite uma cep',
+                          hintText: 'Digite um CEP',
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -117,7 +109,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                         controller: ruaController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Digite um valor valido";
+                            return "Digite um valor válido";
                           }
                           return null;
                         },
@@ -125,6 +117,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                           FocusScope.of(context).unfocus();
                         },
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
@@ -136,7 +129,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                         controller: bairroController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Digite um valor valido";
+                            return "Digite um valor válido";
                           }
                           return null;
                         },
@@ -144,6 +137,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                           FocusScope.of(context).unfocus();
                         },
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
@@ -155,7 +149,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                         controller: cidadeController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Digite um valor valido";
+                            return "Digite um valor válido";
                           }
                           return null;
                         },
@@ -163,6 +157,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                           FocusScope.of(context).unfocus();
                         },
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
@@ -174,7 +169,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                         controller: estadoController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Digite um valor valido";
+                            return "Digite um valor válido";
                           }
                           return null;
                         },
@@ -182,6 +177,7 @@ class _CadastrarCepPageState extends State<CadastrarCepPage> {
                           FocusScope.of(context).unfocus();
                         },
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),

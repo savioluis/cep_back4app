@@ -32,7 +32,7 @@ class CepCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Container(
-                  color: Colors.red,
+                  // color: Colors.red,
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +85,7 @@ class CepCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 28),
                 Container(
-                  color: Colors.yellow,
+                  // color: Colors.yellow,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +113,7 @@ class CepCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 28),
                 Container(
-                  color: Colors.lightGreen,
+                  // color: Colors.lightGreen,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +143,7 @@ class CepCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 28),
                 Container(
-                  color: Colors.deepPurple,
+                  // color: Colors.deepPurple,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,

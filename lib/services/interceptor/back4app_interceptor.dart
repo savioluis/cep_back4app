@@ -3,10 +3,8 @@ import 'package:dio/dio.dart';
 class Back4AppDioInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers["X-Parse-Application-Id"] =
-        "Application-Id HERE";
-    options.headers["X-Parse-REST-API-Key"] =
-        "API-Key HERE";
+    options.headers["X-Parse-Application-Id"] = "Application-Id HERE";
+    options.headers["X-Parse-REST-API-Key"] = "REST-API-Key HERE";
 
     print('REQUEST[${options.method}] => PATH: ${options.path}');
     print('HEADERS ${options.headers}');

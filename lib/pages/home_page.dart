@@ -63,14 +63,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text(
+          "Buscar CEP",
+          style: TextStyle(fontSize: 24),
+        ),
         actions: [
           IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const CadastroCepsPage(),
+                    builder: (context) => const ListaCepsPage(),
                   ),
                 );
               },

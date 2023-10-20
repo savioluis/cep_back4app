@@ -4,14 +4,14 @@ import 'package:viacep_back4app/pages/cadastrar_cep_page.dart';
 import 'package:viacep_back4app/repositories/back4app_repository.dart';
 import 'package:viacep_back4app/widgets/cep_card.widget.dart';
 
-class CadastroCepsPage extends StatefulWidget {
-  const CadastroCepsPage({super.key});
+class ListaCepsPage extends StatefulWidget {
+  const ListaCepsPage({super.key});
 
   @override
-  State<CadastroCepsPage> createState() => _CadastroCepsPageState();
+  State<ListaCepsPage> createState() => _ListaCepsPageState();
 }
 
-class _CadastroCepsPageState extends State<CadastroCepsPage> {
+class _ListaCepsPageState extends State<ListaCepsPage> {
   bool isLoading = true;
 
   final ruaController = TextEditingController();
@@ -86,7 +86,10 @@ class _CadastroCepsPageState extends State<CadastroCepsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Cadastro de CEP'),
+          title: const Text(
+            'CEPS Cadastrados',
+            style: TextStyle(fontSize: 24),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
